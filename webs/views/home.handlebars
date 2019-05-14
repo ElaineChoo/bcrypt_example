@@ -1,0 +1,39 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div>
+			{{#if loggedin}}
+			<form action="/users/logout?_method=delete" method="POST">
+				<input type="submit" value="log out">
+			</form>
+			{{else}}
+			<a href="/users/new">login</a>
+			{{/if}}
+
+		</div>
+		<h1>hello {{name}}</h1>
+		<h1>height {{height}}</h1>
+		<a href="/animals/new">new animal</a>
+		<ul>
+
+		{{#each animals}}
+		  <li>
+		  	<h4>{{this.name}}'s links:
+		  	<a href="/animals/{{this.name}}">
+		  	{{this.name}}
+		    </a>
+		    <br>
+		  	<a href="/animals/{{this.name}}/delete">
+		  	delete {{this.name}}
+		    </a>
+		    <form method="POST" action="/animals/{{this.name}}/delete?_method=delete">
+				<input type="submit" value="submit" />
+			</form>
+		  </li>
+		{{/each}}
+		
+		</ul>
+		<script type="text/javascript" src="public/script.js"></script>
+	</body>
+</html>
